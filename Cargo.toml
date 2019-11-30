@@ -3,6 +3,7 @@ name = "sudors"
 version = "0.1.0"
 authors = ["Julius de Jeu <julius@voidcorp.nl>"]
 edition = "2018"
+description = "A (very good) implementation of sudo but it's in rust"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
@@ -13,3 +14,6 @@ nix = "0.15.0"
 clap = "2.33.0"
 users = "0.9.1"
 rpassword = "4.0.1"
+serde = { version = "1.0", features = ["derive"] }
+toml = "0.5.5"
+quale = "1.0.0"

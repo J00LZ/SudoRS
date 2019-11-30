@@ -1,0 +1,19 @@
+[general]
+enabled = true
+# allow_all = false # use this to allow all users to use sudors, not advised, use user/group specific overrides
+insults = false
+prompt = "Password for {}: " # where {} will be replaced by the user that the password is requested from
+retries = 4
+
+
+[overrides.root]
+password = false
+
+
+[overrides.wheel]
+is_group = true
+allowed_commands = ["/usr/bin/id"]
+runas = ["memes"]
+
+
+#[user_overrides]
