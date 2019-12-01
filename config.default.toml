@@ -1,0 +1,25 @@
+[general]
+enabled = true
+# insults = false # get insulted when you type the wrong password...
+ prompt = "Password for {}: " # where {} will be replaced by the user that the password is requested from, this is the default
+retries = 4
+# allow_all = false # use this to allow all users to use sudors, not advised, use user/group specific overrides
+
+[overrides.root]
+password = false
+
+# Allow group `wheel` to use all commands as all users.
+ [overrides.wheel]
+ is_group = true
+
+## Example for user `foo`
+#[overrides.foo]
+## must type password (default)
+#password = true
+## Can only use `id`, empty array or missing array means all commands (default)
+#allowed_commands = ["/usr/bin/id"]
+## Can only run as users `root` and `bar`, empty array or missing array means all users (default)
+#runas = ["root", "bar"]
+## is not a group (default)
+#isgroup = false
+

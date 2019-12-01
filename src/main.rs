@@ -52,15 +52,12 @@ fn main() {
         .map(|group| group.name().to_os_string().into_string().expect("wat?"))
         .collect();
 
-    println!("{:?}", gs);
     let u = cfg.overrides.iter()
         .filter(|&(k, v)| (!v.is_group && k == uid.name().to_str().unwrap()))
         .collect::<HashMap<&String, &Override>>().get(&uid.name().to_str().unwrap().to_string()).map(|&o| o);
     let g = cfg.overrides.iter()
         .filter(|&(k, v)| (v.is_group && gs.contains(k)))
         .collect::<HashMap<&String, &Override>>();
-
-    println!("{}, {}, {:?}", cfg.general.allow_all, u.is_none(), g);
 
     if !cfg.general.allow_all && u.is_none() && g.keys().len() == 0 {
         println!("User not in sudors file, this incident will be reported.");
@@ -78,7 +75,6 @@ fn main() {
 
     let overr = u.unwrap_or(grpa);
 
-    println!("{:?}", overr);
     if !overr.runas.contains(&args.user.to_string()) && !overr.runas.is_empty() {
         println!("Cannot run as {}", args.user);
         return;

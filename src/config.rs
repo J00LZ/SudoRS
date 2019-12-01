@@ -60,7 +60,7 @@ impl Default for General {
 }
 
 pub fn get_config() -> Result<Config, Error> {
-    let mut f = File::open("./config.toml").expect("Config does not exist...");
+    let mut f = File::open("/etc/sudors.toml").expect("Config does not exist...");
     let mut cfg = String::new();
     f.read_to_string(&mut cfg)?;
     let actual = toml::from_str::<crate::config::Config>(cfg.as_str()).expect("oof");
